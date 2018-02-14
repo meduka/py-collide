@@ -17,18 +17,34 @@ A rect is defined as a list or tuple in the form [x, y, width, height]
 where (x, y) represents the coordinates of the upper left corner of 
 the rectangle.
 """
-
+import math
 
 def point_circle(point, circle):
-    pass
+    a = point[0] - circle[0]
+    b = point[1] - circle[1]
+    r = circle[2]
+
+    return a**2 + b**2 <= r**2
 
 
 def point_rect(point, rect):
-    pass
+    x = point[0]
+    y = point[1]
+
+    left = rect[0]
+    right = rect[0] + rect[2]
+    top = rect[1]
+    bottom = rect[1] + rect[3]
+
+    return left <= x <= right and top <= y <= bottom
 
 
 def circle_circle(circle1, circle2):
-    pass
+    a = circle1[0] - circle2[0]
+    b = circle1[1] - circle2[1]
+    radius_sum = circle1[2] + circle2[2]
+
+    return a**2 + b**2 <= radius_sum ** 2
 
 
 def rect_rect(rect1, rect2):
