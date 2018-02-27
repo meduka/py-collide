@@ -59,7 +59,7 @@ def rect_rect(rect1, rect2):
     top2 = rect2[1]
     bottom2 = rect2[1] + rect2[3]
     
-    return not (right1 < left2 or
-                right2 < left1 or
-                bottom1 < top2 or
-                bottom2 < top1)
+    return not (right1 <= left2 or
+                right2 <= left1 or
+                bottom1 <= top2 or
+                bottom2 <= top1)

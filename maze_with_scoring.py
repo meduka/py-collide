@@ -144,6 +144,8 @@ while not done:
                 player1[1] = w[1] - player1[3]
             if vel1[1]< 0:
                 player1[1] = w[1] + w[3]
+
+
                 
         if intersects.rect_rect(player2, w):                    
             if vel2[1] > 0:
@@ -152,7 +154,29 @@ while not done:
                 player2[1] = w[1] + w[3]
 
 
-    ''' here is where you should resolve player collisions with screen edges '''
+    #''' here is where you should resolve player collisions with screen edges '''
+
+    
+    ''' get block edges (makes collision resolution easier to read) '''
+     
+    left = player1[0] 
+    right = player1[0] + player1[2]
+    top = player1[1]
+    bottom = player1[1] + player1[3]
+
+    ''' if the block is moved completely off of the window, reposition it on the other side '''
+    if left > WIDTH:
+        player1[0] = 0 - player1[2]
+    elif right < 0:
+        player1[0] = WIDTH
+        
+    if bottom < 0:
+        player1[1] = HEIGHT
+    elif top > HEIGHT:
+        player1[1] = 0 - player1[3]
+
+
+
 
 
 
