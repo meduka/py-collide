@@ -47,7 +47,13 @@ wall3 =  [200, 575, 600, 25]
 wall4 =  [0, 575, 100, 25]
 wall5 =  [100, 100, 25, 200]
 
-walls = [wall1, wall2, wall3, wall4, wall5]
+wall6 = [200,50, 300, 25]
+
+
+walls = [wall1, wall2, wall3, wall4, wall5, wall6]
+
+
+
 
 # Make coins
 coin1 = [300, 500, 25, 25]
@@ -75,6 +81,12 @@ def setup():
     size = 50
 
     stage = START
+
+'''
+def wall_move(wall_vel, wall_speed):
+    while stage == PLAYING:
+        wall_vel[1] = wall_speed
+'''    
 
 # Game loop
 
@@ -186,7 +198,6 @@ while not done:
                     player1[1] = w[1] + w[3]
 
 
-                    
             if intersects.rect_rect(player2, w):                    
                 if vel2[1] > 0:
                     player2[1] = w[1] - player2[3]
@@ -200,9 +211,10 @@ while not done:
             stage = END
 
         '''
-            
-     
 
+        '''   
+        wall_move(wall_vel, wall_speed)
+        '''
     #''' here is where you should resolve player collisions with screen edges '''
 
     
