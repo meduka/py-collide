@@ -1,4 +1,4 @@
-# Imports
+ # Imports
 import pygame
 import intersects
 
@@ -39,6 +39,9 @@ vel2 = [0, 0]
 player2_speed = 5
 score2 = 0
 
+key = [775, 25, 25, 25]
+
+
 
 # make walls
 wall1 =  [200, 0, 600, 25]
@@ -47,7 +50,7 @@ wall3 =  [200, 575, 600, 25]
 wall4 =  [0, 575, 100, 25]
 wall5 =  [100, 100, 25, 200]
 
-wall6 = [200,50, 300, 25]
+wall6 = [500,50, 300, 25]
 
 
 walls = [wall1, wall2, wall3, wall4, wall5, wall6]
@@ -273,6 +276,9 @@ while not done:
     pygame.draw.rect(screen, RED, player1)    
     pygame.draw.rect(screen, BLUE, player2)
 
+
+    pygame.draw.rect(screen, GREEN, key)
+    
     for w in walls:
         pygame.draw.rect(screen, WHITE, w)
 
