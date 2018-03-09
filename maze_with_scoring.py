@@ -39,9 +39,9 @@ vel2 = [0, 0]
 player2_speed = 5
 score2 = 0
 
-key = [775, 25, 25, 25]
+key1 = [775, 25, 25, 25]
 
-
+keys = [key1]
 
 # make walls
 wall1 =  [200, 0, 600, 25]
@@ -51,9 +51,16 @@ wall4 =  [0, 575, 100, 25]
 wall5 =  [100, 100, 25, 200]
 
 wall6 = [500,50, 300, 25]
+wall7 = [500, 100, 300, 25]
+wall8 = [500,150, 300, 25]
 
+wall9 = [500,425, 300, 25]
+wall10 = [500, 475, 300, 25]
+wall11= [500,525, 300, 25]
 
-walls = [wall1, wall2, wall3, wall4, wall5, wall6]
+walls = [wall1, wall2, wall3, wall4, wall5,
+         wall6, wall7, wall8, wall9, wall10,
+         wall11]
 
 
 
@@ -90,6 +97,7 @@ def wall_move(wall_vel, wall_speed):
     while stage == PLAYING:
         wall_vel[1] = wall_speed
 '''    
+
 
 # Game loop
 
@@ -197,20 +205,29 @@ while not done:
             if intersects.rect_rect(player1, w):                    
                 if vel1[1] > 0:
                     player1[1] = w[1] - player1[3]
-                if vel1[1]< 0:
+                elif vel1[1]< 0:
                     player1[1] = w[1] + w[3]
 
 
             if intersects.rect_rect(player2, w):                    
                 if vel2[1] > 0:
                     player2[1] = w[1] - player2[3]
-                if vel2[1]< 0:
+                elif vel2[1]< 0:
                     player2[1] = w[1] + w[3]
 
+        for k in keys:
+            if intersects.rect_rect(player1, k):        
+                if vel1[0] > 0:
+                    player1[0] = k[0] - (player1[2]/2)
+                elif vel1[0] < 0:
+                    player1[0] = k[0] + k[2]
+
+
+        
         ''' end game on wall collision '''
         '''
         if block_pos[0] < 0 or block_pos[0] > 950 or \
-           block_pos[1] < 0 or block_pos[1] > 650:
+           block_pos[1] <  0 or block_pos[1] > 650:
             stage = END
 
         '''
@@ -273,12 +290,14 @@ while not done:
     # Drawing code (Describe the picture. It isn't actually drawn yet.)
     screen.fill(BLACK)
 
+    for k in keys:
+        pygame.draw.rect(screen, GREEN, k)
+    
+
     pygame.draw.rect(screen, RED, player1)    
     pygame.draw.rect(screen, BLUE, player2)
 
 
-    pygame.draw.rect(screen, GREEN, key)
-    
     for w in walls:
         pygame.draw.rect(screen, WHITE, w)
 
